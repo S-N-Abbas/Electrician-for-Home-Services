@@ -26,7 +26,7 @@ Welcome to Electricians for Home Services, your one-stop platform for finding an
 
 To run this project locally or contribute to its development, follow these steps:
 
-1. Clone the repository to your local machine: `https://github.com/S-N-Abbas/Electrician-for-Home-Services.git`
+1. Clone the repository to your local machine: `git clone https://github.com/S-N-Abbas/Electrician-for-Home-Services.git`
 
 2. Open the project in Visual Studio (or your preferred .NET development environment).
 
