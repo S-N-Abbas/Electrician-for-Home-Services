@@ -1,0 +1,115 @@
+﻿@model Electrician_for_Home_Services.Models.Person
+
+@{
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
+    ViewBag.Title = "Edit";
+
+    string style = "display: none";
+}
+
+<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+    <div class="wrapper wrapper--w680">
+        <div class="card card-4">
+            <div class="card-body">
+                <h2 class="title">Profile</h2>
+                @using (Html.BeginForm("Edit", "People", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Username)
+                    <div class="row row-space">
+                        <div class="col-2">
+                            <div class="input-group">
+                                <img class="ProfilePic" width="200" src="@Model.ProfilePic" />
+                                <br />
+                                @Html.LabelFor(model => model.ProfilePic, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <input type="file" name="Thumbnail" id="Thumbnail" />
+                                @Html.ValidationMessageFor(model => model.ProfilePic, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.ProfilePic)
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="input-group">
+                                @Html.LabelFor(m => m.FirstName, new { @class = "label" })
+                                @Html.TextBoxFor(m => m.FirstName, new { @class = "input--style-4" })
+                                @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row row-space">
+                        <div class="col-2">
+                            <div class="input-group">
+                                @Html.LabelFor(m => m.LastName, new { @class = "label" })
+                                @Html.TextBoxFor(m => m.LastName, new { @class = "input--style-4" })
+                                @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="input-group">
+                                @Html.LabelFor(m => m.MobileNo, new { @class = "label" })
+                                @Html.TextBoxFor(m => m.MobileNo, new { @class = "input--style-4" })
+                                @Html.ValidationMessageFor(m => m.MobileNo, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        @Html.LabelFor(model => model.PersonType, htmlAttributes: new { @class = "label" })
+                        <div class="rs-select2 js-select-simple select--no-search">
+                            <select name="PersonType" id="PersonType" onchange="ShowHide()">
+                                @if (Model.PersonType == "Customer")
+                                {
+                                    <option selected value="Customer">Customer</option>
+                                    <option value="Electrician">Electrician</option>
+                                }
+                                else
+                                {
+                                    style = "";
+
+                                    <option value="Customer">Customer</option>
+                                    <option selected value="Electrician">Electrician</option>
+                                }
+                            </select>
+                            <div class="select-dropdown"></div>
+                        </div>
+                    </div>
+
+                    <div class="row row-space" id="hidden-panel" style="@style">
+                        <div class="col-2">
+                            <div class="input-group">
+                                @Html.LabelFor(m => m.Experience, new { @class = "label" })
+                                @Html.TextBoxFor(m => m.Experience, new { @class = "input--style-4" })
+                                @Html.ValidationMessageFor(m => m.Experience, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="input-group">
+                                @Html.LabelFor(m => m.Expertise, new { @class = "label" })
+                                @Html.TextBoxFor(m => m.Expertise, new { @class = "input--style-4" })
+                                @Html.ValidationMessageFor(m => m.Expertise, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                  
+                    <div class="input-group">
+                        @Html.LabelFor(m => m.Address, new { @class = "label" })
+                        @Html.TextAreaFor(m => m.Address, new { @class = "input--style-4" })
+                        @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="p-t-15">
+                        <button class="btn btn--radius-2 btn--blue" type="submit">Save</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/MyScript.js")
+}

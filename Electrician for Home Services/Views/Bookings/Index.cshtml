@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Electrician_for_Home_Services.Models.Booking>
+
+@using Microsoft.AspNet.Identity;
+
+@{
+    ViewBag.Title = "Bookings";
+}
+
+@{
+    string username = User.Identity.GetUserName();
+}
+
+<div class="UpDownPadding SidePadding ExtraPadding">
+
+    <h2>Bookings</h2>
+
+    <p>
+        @ViewBag.Message
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BookingToUsername)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookingByUsername)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                Status
+            </th>
+            <th>Reason</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookingToUsername)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookingByUsername)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+
+                @{
+                    if (item.IsAccepted == false && item.CancelledBy.Length < 1)
+                    {
+                        <td>Waiting Acceptance</td>
+                        if (item.BookingToUsername == username)
+                        {
+                            <td>
+                                @Html.ActionLink("Accept", "Accept", "Bookings", new { id = item.BookingID }, new { @class = "btn btn-success" }) |
+                                @Html.ActionLink("Cancel", "Cancel", "Bookings", new { id = item.BookingID }, new { @class = "btn btn-danger" })
+                            </td>
+                        }
+                        else if (item.BookingByUsername == username)
+                        {
+                            <td>
+                                @Html.ActionLink("Cancel", "Cancel", "Bookings", new { id = item.BookingID }, new { @class = "btn btn-danger" }) |
+                                @Html.ActionLink("Delete", "Delete", "Bookings", new { id = item.BookingID }, new { @class = "btn btn-danger" })
+                            </td>
+                        }
+                    }
+                    else if (item.IsAccepted == true && item.CancelledBy.Length < 1)
+                    {
+
+                        if (item.BookingByUsername == username && !item.IsCompleted)
+                        {
+                            <td>
+                                @Html.ActionLink("Complete", "Complete", "Bookings", new { id = item.BookingID }, new { @class = "btn btn-success" });
+                            </td>
+                        }
+                        else if (item.IsCompleted)
+                        {
+                            <td>Completed</td>
+                        }
+                        else
+                        {
+                            <td>Accepted</td>
+                        }
+                        <td></td>
+                    }
+                    else if (item.CancelledBy.Length > 1)
+                    {
+                        <td>Cancelled By @item.CancelledBy</td>
+                        <td>@item.CancellationCause</td>
+                    }
+                }
+
+            </tr>
+        }
+
+    </table>
+
+</div>

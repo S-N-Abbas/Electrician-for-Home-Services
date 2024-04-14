@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Electrician_for_Home_Services.Models.Person>
+
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@if(Model.Count() < 1)
+            {
+                <div class="Padding-Content">
+                    <h3 class="center">No results found regarding your search</h3>
+                </div>
+            }
+
+<div class="EFYBlock Padding-Content">
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-4">
+                @if (User.IsInRole("Admin"))
+                {
+                    <div class="AdminControl">
+                        @Html.ActionLink("Edit", "Edit", "People", new { id = item.Username }, new { @class = "btn btn-EFY btn-Admin" })
+                        @if (item.IsApproved == false)
+                        {
+                            @Html.ActionLink("Approve", "Approve", "People", new { id = item.Username }, new { @class = "btn btn-EFY btn-Admin" })
+                        }
+                    </div>
+                }
+
+                @{
+                    string Online = "Offline";
+                    if (HttpRuntime.Cache["LoggedInUsers"] != null)
+                    {
+                        var loggedOnUsers = HttpRuntime.Cache["LoggedInUsers"] as Dictionary<string, DateTime>;
+
+                        if (loggedOnUsers != null)
+                        {
+                            if (loggedOnUsers.ContainsKey(item.Username))
+                            {
+                                Online = "Online";
+                            }
+                        }
+                    }
+                }
+
+            <a href="~/People/Details/@item.Username">
+                <img class="EFY-Thumbnail SRounded" src="@item.ProfilePic" alt="@item.Username" />
+                <p><span class="@Online"></span> <b>@item.FirstName @item.LastName</b> (@item.Username)</p>
+                @if (item.PersonType == "Electrician")
+                {
+
+                    Html.RenderAction("ViewJustRating", "People", new { id = item.Username });
+                }
+            </a>
+            </div>
+
+        }
+    </div>
+</div>

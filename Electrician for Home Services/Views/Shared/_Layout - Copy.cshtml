@@ -1,0 +1,190 @@
+﻿@using Microsoft.AspNet.Identity;
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    @Styles.Render("~/bundles/bootstrap")
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <title>Electricians For Home Services</title>
+</head>
+
+<body>
+    <header class="header bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 align-self-center text-left">
+                    <h6>&copy; @DateTime.Now.Year</h6>
+                </div>
+                <div class="col-sm-4 col-12 align-self-center box-1 text-center">
+                    <a class="navbar-brand" href="index.html"><img src="/images/E4HS_Logo.png" alt="logo"></a>
+                </div>
+                <div class="col-sm-4 align-self-center text-right">
+                    <h6>Electricians for Home Servies</h6>
+                </div>
+            </div>
+            <!--/row-->
+        </div>
+        <!--container-->
+    </header>
+    <span class="position-absolute trigger"><!-- hidden trigger to apply 'stuck' styles --></span>
+    <nav class="navbar navbar-expand-sm sticky-top navbar-dark">
+        <div class="container">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar1">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar1">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("About Us", "About", "Home", null, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Electricians", "Electricians", "People", null, new { @class = "nav-link" })
+                    </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @Html.ActionLink("My Bookings", "Index", "Bookings", null, new { @class = "nav-link" })
+                    }
+                    @Html.Partial("_LoginPartial")
+                </ul>
+            </div>
+        </div>
+        <!--container end-->
+    </nav>
+
+    @RenderBody()
+
+    <section class="section-7">
+        <!-- Footer -->
+        <footer class="page-footer font-small stylish-color-dark">
+
+            <!-- Footer Links -->
+            <div class="container text-center text-md-left">
+
+                <!-- Grid row -->
+                <div class="row">
+
+                    <!-- Grid column -->
+                    <div class="col-lg-5 col-sm-12 mx-auto box-1">
+
+                        <!-- Content -->
+                        <a href="index.html"><img src="/images/E4HS_Logo.png" alt="footer-logo"></a>
+                        <p>Electrician4HomeServices provide you best electricians for home services. We have highly skilled and talented elctricians all over the city. You can book your electrician right from your home through this website.</p>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <hr class="clearfix w-100 d-md-none">
+
+                    <!-- Grid column -->
+                    <div class="col-lg-2 col-sm-4 box-2 mx-auto">
+
+                        <!-- Links -->
+                        <h5>Site Navigation</h5>
+
+                        <ul class="list-unstyled">
+                            <li>
+                                @Html.ActionLink("Electricians", "Electricians", "People")
+                            </li>
+                           
+                            <li>
+                                @Html.ActionLink("Complaints", "Index", "Complaints")
+                            </li>
+                            
+                        </ul>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <hr class="clearfix w-100 d-md-none">
+
+                    <!-- Grid column -->
+                    <div class="col-lg-2 col-sm-4 box-3 mx-auto">
+
+                        <!-- Links -->
+                        <h5>information</h5>
+
+                        <ul class="list-unstyled">
+                            <li>
+                                @Html.ActionLink("My Profile", "MyProfile", "People")
+                            </li>
+                            <li>
+                                @Html.ActionLink("My Bookings", "Index", "Bookings")
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <hr class="clearfix w-100 d-md-none">
+
+                    <!-- Grid column -->
+                    <div class="col-lg-2 col-sm-4 box-4 mx-auto">
+
+                        <!-- Links -->
+                        <h5>Our Moto</h5>
+
+                        <ul class="list-unstyled">
+                            <li>
+                                One Call
+                            </li>
+                            <li>
+                                That's All
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!-- Grid column -->
+
+                </div>
+                <!-- Grid row -->
+
+            </div>
+            <!-- Footer Links -->
+            <!-- Copyright -->
+            <div class="footer-copyright text-center">
+                <div class="gradient"></div>
+                <p>&copy; @DateTime.Now.Year - Electricians For Home Services</p>
+            </div>
+            <!-- Copyright -->
+
+        </footer>
+        <!-- Footer -->
+    </section>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    @Scripts.Render("~/bundles/jquery")
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    @Scripts.Render("~/bundles/bootsrap")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
+    <script src="~/Scripts/animate.js"></script>
+    <script src="~/Scripts/custom.js"></script>
+    <script src="~/Scripts/MyScript.js"></script>
+    @RenderSection("scripts", required: false)
+    <script>
+        $(document).on('click', '[data-toggle="lightbox"]', function (event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
+        });
+    </script>
+</body>
+
+</html>

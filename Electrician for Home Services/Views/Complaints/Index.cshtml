@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Electrician_for_Home_Services.Models.Complaint>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="UpDownPadding SidePadding">
+    <h2>Complaints</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ComplaintAbout)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComplaintByUsername)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComplaintText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ComplaintAbout)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ComplaintByUsername)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ComplaintText)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.ComplaintID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ComplaintID })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

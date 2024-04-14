@@ -1,0 +1,66 @@
+﻿@model Electrician_for_Home_Services.Models.Person
+
+@{
+    ViewBag.Title = "Details";
+
+        string Online = "Offline";
+        if (HttpRuntime.Cache["LoggedInUsers"] != null)
+        {
+            var loggedOnUsers = HttpRuntime.Cache["LoggedInUsers"] as Dictionary<string, DateTime>;
+
+            if (loggedOnUsers != null)
+            {
+                if (loggedOnUsers.ContainsKey(Model.Username))
+                {
+                    Online = "Online";
+                }
+            }
+        }
+}
+
+<div class="UpDownPadding SidePadding">
+    <h2>@Model.Username</h2>
+    <div class="center">
+        <div>
+            <hr />
+            <p align="center"><img src="@Model.ProfilePic" class="ProfilePic" /></p>
+            <table>
+                <tr>
+                    <td><b>Name</b></td>
+                    <td colspan="2"><span class="@Online"></span> @Model.FirstName @Model.LastName</td>
+                </tr>
+                <tr>
+                    <td><b>Mobile</b></td>
+                    <td colspan="2">@Model.MobileNo</td>
+                </tr>
+                <tr>
+                    <td><b>Address</b></td>
+                    <td colspan="2">@Model.Address</td>
+                </tr>
+                @if (Model.PersonType == "Electrician")
+                {
+                    <tr>
+                        <td><b>Experience</b></td>
+                        <td colspan="2">@Model.Experience year(s)</td>
+                    </tr>
+                    <tr>
+                        <td><b>Expertise</b></td>
+                        <td colspan="2">@Model.Expertise</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>@Html.ActionLink("Book Now", "Create", "Bookings", new { id = Model.Username }, new { @class = "btn btn-success" })</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+@if (Model.PersonType == "Electrician")
+{
+    
+    Html.RenderAction("ViewRating", "People", new { id = Model.Username });
+
+    Html.RenderAction("ViewRemarks", "People", new { id = Model.Username });
+}

@@ -1,0 +1,29 @@
+﻿@model Electrician_for_Home_Services.Models.Rating
+
+
+<div class="ExtraPadding rating">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal center">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <input class="form-control text-box single-line" id="RatedToUsername" name="RatedToUsername" readonly="readonly" hidden type="text" value="@ViewBag.RatedTo">
+        <p>Rate Electrician</p>
+
+        <div class="ratingStars">
+
+            <input type="radio" name="RatingValue" id="5" value="5"><label for="5">☆</label>
+            <input type="radio" name="RatingValue" id="4" value="4"><label for="4">☆</label>
+            <input type="radio" name="RatingValue" id="3" value="3"><label for="3">☆</label>
+            <input type="radio" name="RatingValue" id="2" value="2"><label for="2">☆</label>
+            <input type="radio" name="RatingValue" id="1" value="1"><label for="1">☆</label>
+        </div>
+        <input type="submit" value="Rate Now" class="btn btn-success" />
+    </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

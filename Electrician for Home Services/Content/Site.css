@@ -1,0 +1,569 @@
+﻿body {
+    margin-top: 50px;
+    font-family: Calibri;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+}
+
+
+    .navbar-inverse .navbar-brand:hover,
+    .navbar-inverse .navbar-brand:focus,
+    .navbar-inverse .navbar-nav > li > a:hover,
+    .navbar-inverse .navbar-nav > li > a:focus {
+        color: #dbb778;
+    }
+
+.navbar-brand {
+    width: 200px;
+    padding: 5px 15px;
+}
+
+.navbar-collapse {
+    z-index: 1;
+}
+
+.carousel-item > img {
+    max-width: 100%;
+}
+
+.Padding-Content {
+    padding: 100px 15px;
+
+}
+
+@media(min-width: 768px) {
+    .Padding-Content-2 {
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+}
+
+.Welcome {
+    text-align: center;
+    color: #fff;
+    background-color: #232323;
+    padding: 50px 0px;
+}
+
+    .Welcome > img {
+        width: 500px;
+    }
+
+.EFYBlock {
+    text-align: center;
+    font-size: large;
+}
+
+.TPad {
+    padding: 20px 0px;
+}
+
+.EFYBlock a {
+    color: inherit;
+    transition: opacity ease-in-out 200ms;
+    text-decoration: none;
+}
+
+    .EFYBlock a:hover {
+        opacity: 0.9;
+    }
+
+.EFY-Thumbnail {
+    width: 200px;
+    max-width: 100%;
+}
+
+.SRounded {
+    border-radius: 10px 10px 0px 0px;
+}
+
+.SRounded-2 {
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.Mega {
+    text-align: center;
+    color: #dbb778;
+    padding: 20px 0px;
+    border-radius: 0px 0px 30px 30px;
+    border-bottom: 5px groove #999;
+}
+
+.DarkBG {
+    background-color: #333;
+    color: #dbb778;
+}
+
+.Mega h3 {
+    padding: 10px 0px;
+}
+
+.EFY-Thumbnail2 {
+    max-width: 90%;
+    transition: ease-in-out 200ms;
+}
+
+.More {
+    padding: 10px 20px;
+    text-align: center;
+}
+
+    .More img {
+        width: 30%;
+    }
+
+@media(max-width: 650px) {
+    #myImg {
+        width: 80%;
+    }
+}
+
+.center {
+    margin: auto;
+    align-content: center;
+}
+
+.BumpUp {
+    color: #dbb778;
+    margin-top: -50px;
+    position: absolute;
+    left: 15%;
+    padding: 10px 0px;
+    width: 70%;
+    background-color: #fff;
+    border-radius: 20px 20px 0px 0px;
+    opacity: 0.8;
+}
+
+@media(max-width: 650px)
+{
+    #myImg {
+        width: 80%;
+    }
+}
+
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    #myImg:hover {
+        opacity: 0.7;
+    }
+
+table {
+    width: 100%;
+}
+
+tbody {
+}
+
+td {
+    padding: 3px;
+}
+
+footer {
+    padding: 10px 20px;
+}
+
+.Gold {
+    color: #dbb778;
+}
+
+.Separate {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.AdminControl {
+    position: absolute;
+    z-index: 1;
+    top: 30%;
+    left: 30%;
+    visibility: hidden;
+}
+
+.col-sm-4:hover > .AdminControl {
+    visibility: visible;
+}
+
+.col-sm-4 > a > img {
+    transition: filter ease-in-out 100ms;
+}
+
+.col-sm-4:hover > .AdminControl ~ a > img {
+    filter: blur(5px);
+    -webkit-filter: blur(5px)
+}
+
+.btn-EFY {
+    color: #dbb778;
+    border: 1px solid #dbb778;
+    background-color: transparent;
+    transition: ease-in-out 300ms;
+}
+
+.btn-EFY a {
+    color: #343a40;
+}
+.btn-EFY:hover {
+    text-decoration:none;
+    color: #fff;
+    background-color: #dbb778;
+}
+
+.btn-EFY a:hover {
+    text-decoration: none;
+}
+
+.FBShare {
+    margin: auto;
+    text-align: center;
+}
+
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+#GMap {
+    width: 80%;
+    height: 400px;
+    border: 2px solid #dbb778;
+}
+
+.pbg {
+    color: #fff;
+    padding-top: 200px;
+    padding-bottom: 200px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-image: url(/Images/Contact.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: scroll;
+}
+
+.pd {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+    .pd {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+}
+
+.bg-dark {
+    color: #dbb778;
+}
+
+.logoImg {
+    max-width: 30px;
+    width: 30px;
+}
+
+.One {
+    align-content: center;
+    background-color: #38309b;
+    padding: 100px 20px;
+}
+
+.Two {
+    align-content: center;
+    padding: 100px 20px;
+}
+
+footer div {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer a {
+    color: #dbb778;
+}
+
+    footer a:hover {
+        color: #fff;
+        text-decoration: none;
+    }
+
+
+.rating {
+    background: #222225;
+    color: white;
+    margin: auto;
+    text-align: center;
+}
+
+.ratingStars {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+
+    .ratingStars > input {
+        display: none;
+    }
+
+    .ratingStars > label {
+        position: relative;
+        width: 100px;
+        font-size: 30px;
+        color: #FFD700;
+        cursor: pointer;
+    }
+
+        .ratingStars > label::before {
+            content: "\2605";
+            position: absolute;
+            opacity: 0;
+        }
+
+        .ratingStars > label:hover:before,
+        .ratingStars > label:hover ~ label:before {
+            opacity: 1 !important;
+        }
+
+    .ratingStars > input:checked ~ label:before {
+        opacity: 1;
+    }
+
+    .ratingStars:hover > input:checked ~ label:before {
+        opacity: 0.4;
+    }
+
+
+
+
+.heading {
+    font-size: 25px;
+    margin-right: 25px;
+}
+
+.fa {
+    font-size: 25px;
+}
+
+.checked {
+    color: orange;
+}
+
+/* Three column layout */
+.side {
+    float: left;
+    width: 15%;
+    margin-top: 10px;
+}
+
+.middle {
+    float: left;
+    width: 70%;
+    margin-top: 10px;
+}
+
+/* Place text to the right */
+.right {
+    text-align: right;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* The bar container */
+.bar-container {
+    width: 100%;
+    background-color: #f1f1f1;
+    text-align: center;
+    color: white;
+}
+
+/* Individual bars */
+.bar-5 {
+    height: 18px;
+    background-color: #04AA6D;
+}
+
+.bar-4 {
+    height: 18px;
+    background-color: #2196F3;
+}
+
+.bar-3 {
+    height: 18px;
+    background-color: #00bcd4;
+}
+
+.bar-2 {
+    width: 4%;
+    height: 18px;
+    background-color: #ff9800;
+}
+
+.bar-1 {
+    height: 18px;
+    background-color: #f44336;
+}
+
+/* Responsive layout - make the columns stack on top of each other instead of next to each other */
+@media (max-width: 400px) {
+    .side, .middle {
+        width: 100%;
+    }
+    /* Hide the right column on small screens */
+    .right {
+        display: none;
+    }
+}
+
+
+.hidden-panel {
+    display: none;
+}
+
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: transparent;
+    color: #3821ff;
+    padding: 0px;
+    font-size: 25px;
+    border: none;
+    cursor: pointer;
+}
+
+    .dropbtn .fa {
+        font-size: 50px;
+    }
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: #ddd
+        }
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+    display: block;
+}
+
+.center {
+    margin: auto;
+    width: 500px;
+}
+
+@media (max-width: 700px) {
+    .center {
+        width: 100%;
+    }
+}
+
+.rounded {
+    background-color: #fff;
+}
+
+.SidePadding {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+@media (max-width: 700px) {
+    .SidePadding {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+.UpDownPadding {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.ExtraPadding {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.UpPadding {
+    padding-top: 50px;
+}
+
+.ProfilePic {
+    width: 300px;
+    max-width: 300px;
+}
+
+.Online {
+    height: 10px;
+    width: 10px;
+    background-color: #0b0;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.Offline {
+    height: 10px;
+    width: 10px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}

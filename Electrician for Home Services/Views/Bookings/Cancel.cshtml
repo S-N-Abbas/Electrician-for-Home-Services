@@ -1,0 +1,42 @@
+﻿@model Electrician_for_Home_Services.Models.Booking
+
+@{
+    ViewBag.Title = "Cancel";
+}
+
+<div class="UpDownPadding SidePadding">
+    <h2>Cancellation Booking</h2>
+    <div class="center">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.BookingID)
+            @Html.HiddenFor(model => model.BookingByUsername)
+            @Html.HiddenFor(model => model.BookingToUsername)
+            @Html.HiddenFor(model => model.Date)
+
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CancellationCause, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.CancellationCause, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CancellationCause, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+        </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

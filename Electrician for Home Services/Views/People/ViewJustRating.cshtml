@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Electrician_for_Home_Services.Models.Rating>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+@if (Model.Count() > 0)
+{
+    double avgRating = 0.0;
+    int total = Model.Count();
+    int one = 0;
+    int two = 0;
+    int three = 0;
+    int four = 0;
+    int five = 0;
+
+    int oneWidth = 0;
+    int twoWidth = 0;
+    int threeWidth = 0;
+    int fourWidth = 0;
+    int fiveWidth = 0;
+
+    foreach (var item in Model)
+    {
+        avgRating += item.RatingValue;
+
+        if (item.RatingValue == 1)
+        {
+            one++;
+        }
+        else if (item.RatingValue == 2)
+        {
+            two++;
+        }
+        else if (item.RatingValue == 3)
+        {
+            three++;
+        }
+        else if (item.RatingValue == 4)
+        {
+            four++;
+        }
+        else if (item.RatingValue == 5)
+        {
+            five++;
+        }
+    }
+    avgRating = avgRating / total;
+
+    oneWidth = (int)((one * 100) / total);
+    twoWidth = (int)((two * 100) / total);
+    threeWidth = (int)((three * 100) / total);
+    fourWidth = (int)((four * 100) / total);
+    fiveWidth = (int)((five * 100) / total);
+
+    <div class="SidePadding">
+        @for (int i = 0; i < (int)avgRating; i++)
+        {
+            <span class="fa fa-star checked"></span>
+        }
+
+        @for (int i = 0; i < (5 - (int)avgRating); i++)
+        {
+            <span class="fa fa-star"></span>
+        }
+        <span>(@total)</span>
+    </div>
+}
+

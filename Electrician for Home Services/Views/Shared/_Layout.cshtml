@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Electricians 4 Home Services</title>
+    @Styles.Render("~/Content/css")
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    @Scripts.Render("~/bundles/modernizr")
+
+    <meta lang="en" name="description" content="We provide professional and experienced electricians for you. You can hire any electrician and get your job done within moments.">
+    <meta lang="en" name="keywords" content="Electricians, Home Services, Experienced">
+
+    <meta property="og:url" content="@HttpContext.Current.Request.Url.AbsoluteUri" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="@ViewBag.Title" />
+
+    @{
+        try
+        {
+            if (ViewBag.desc != "")
+            {
+                <meta property="og:description" content="@ViewBag.desc.ToString().Replace("\n", ", ")" />
+                <meta property="og:image" content="https://@HttpContext.Current.Request.Url.Host.ToString()@ViewBag.img.ToString().Replace(" ", "%20")" />
+            }
+        }
+        catch
+        {
+            // ignore
+        }
+    }
+
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="~/Home"><img src="~/images/E4HS_Logo.png" alt="Electricians4U Logo" class="logoImg"/></a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li>@Html.ActionLink("Electricians", "Electricians", "People", null, new { @class = "nav-link" })</li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        @Html.ActionLink("Home Electrician", "Electricians", "People", new { filter = "Home Electrician" }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Auto Electrician", "Electricians", "People", new { filter = "Auto Electrician" }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Repair Electrician", "Electricians", "People", new { filter = "Repair Electrician" }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Motor Electrician", "Electricians", "People", new { filter = "Motor Electrician" }, new { @class = "dropdown-item" })
+                    </div>
+                </li>
+                <li>@Html.ActionLink("Conplaints", "Index", "Complaints", null, new { @class = "nav-link" })</li>
+                @if (User.IsInRole("Admin"))
+                {
+                    <li>@Html.ActionLink("Requests", "Requests", "People", null, new { @class = "nav-link" })</li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("About Us", "About", "Home", null, new { @class = "nav-link" })</li>
+                }
+                @{
+                    Html.RenderPartial("_LoginPartial");
+                }
+            </ul>
+
+            @using (Html.BeginForm("Electricians", "People", FormMethod.Get, new { @class = "form-inline my-2 my-lg-0" }))
+            {
+                <input class="form-control mr-sm-2" type="search" name="search" id="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            }
+        </div>
+    </nav>
+    <div class="body-content">
+        @RenderBody()
+        <footer class="bg-dark">
+            <div class="Padding-Content">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img class="logoImg" src="/images/E4HS_Logo.png" alt="Electricians Logo" />
+                        <br />
+                        <br />
+                        <p>&copy; @DateTime.Now.Year - Electricians 4 Home Services</p>
+                    </div>
+                    <div class="col-md-3">
+                        <b>For You</b>
+                        <br />
+                        @Html.ActionLink("Home Electrician", "Electricians", "People", new { filter = "Home Electrician" }, null)
+                        <br />
+                        @Html.ActionLink("Auto Electrician", "Electricians", "People", new { filter = "Auto Electrician" }, null)
+                        <br />
+                        @Html.ActionLink("Repair Electrician", "Electricians", "People", new { filter = "Repair Electrician" }, null)
+                        <br />
+                    </div>
+                    <div class="col-md-3">
+                        <b>Phone</b>
+                        <br />
+                        <b>Mob:</b> XXX XXXXXXX
+                    </div>
+                    <div class="col-md-3">
+                        <b>Address</b>
+                        <br />
+                        <address>
+                            Allama Iqbal Road,<br />Mirpur,<br />AK.
+                        </address>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    @Scripts.Render("~/Scripts/Jquery.min.js")
+    @Scripts.Render("~/Scripts/SmoothScroll.js")
+</body>
+</html>

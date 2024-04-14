@@ -1,0 +1,44 @@
+﻿@model Electrician_for_Home_Services.Models.RateReviewViewModel
+
+@{
+    ViewBag.Title = "Rate n Review";
+}
+
+
+<div class="SidePadding">
+    @{
+        Html.RenderAction("ViewRating", "People", new { id = Model.ToUsername });
+        Html.RenderAction("ViewRemarks", "People", new { id = Model.ToUsername});
+    }
+</div>
+
+<div class="UpDownPadding rating">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal center">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ToUsername)
+            <p>Rate Electrician</p>
+
+            <div class="ratingStars">
+                <input type="radio" name="RatingValue" id="5" value="5"><label for="5">☆</label>
+                <input type="radio" name="RatingValue" id="4" value="4"><label for="4">☆</label>
+                <input type="radio" name="RatingValue" id="3" value="3"><label for="3">☆</label>
+                <input type="radio" name="RatingValue" id="2" value="2"><label for="2">☆</label>
+                <input type="radio" name="RatingValue" id="1" value="1"><label for="1">☆</label>
+            </div>
+            <div class="UpDownPadding">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ReviewText, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.ReviewText, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ReviewText, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="Save Review" class="btn btn-success" />
+        </div>
+    }
+</div>
